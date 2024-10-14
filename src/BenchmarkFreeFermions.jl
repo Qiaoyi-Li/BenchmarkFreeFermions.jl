@@ -1,5 +1,16 @@
 module BenchmarkFreeFermions
 
-# Write your package code here.
+using LinearAlgebra
+using Statistics:mean
+using SkewLinearAlgebra
+
+export SingleParticleSpectrum, EigenModes
+include("SingleParticleSpectrum.jl")
+
+export n_fermion, ParticleNumber, LogPartition, Energy, FreeEnergy, Entropy, SpecificHeat_μ, SolveChemicalPotential
+include("Thermodynamics.jl")
+
+export GreenFunction, TimeCorrelation, Density
+include("Observables.jl")
 
 end
