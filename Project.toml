@@ -9,8 +9,9 @@ SkewLinearAlgebra = "5c889d49-8c60-4500-9d10-5d3a22e2f4b9"
 Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 
 [compat]
-julia = "1.6.7"
 SkewLinearAlgebra = "~1"
+Statistics = "1"
+julia = "1.6.7"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
