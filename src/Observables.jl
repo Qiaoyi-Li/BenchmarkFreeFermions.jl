@@ -88,7 +88,7 @@ function ExpectationValue(G::Matrix{F},
                if !in(i, dagidx)
                     if in(j, dagidx) # c c^dag
                          A[i, j] = G[si[i], si[j]]
-                         A[j, i] = -conj(A[i, j])
+                         A[j, i] = -A[i, j]
                     end
                elseif !in(j, dagidx) # c^dag c
                     if si[i] == si[j]
@@ -96,7 +96,7 @@ function ExpectationValue(G::Matrix{F},
                     else
                          A[i, j] = -G[si[j], si[i]]
                     end
-                    A[j, i] = -conj(A[i, j])
+                    A[j, i] = -A[i, j]
                end
           end
      end
@@ -128,12 +128,12 @@ function TimeCorrelation(ξ::Vector{Float64},
                if !in(i, dagidx)
                     if in(j, dagidx) # c(τi) c^dag(τj)
                          A[i, j] = GreenFunction(ξ, V, β, si[i], si[j]; τ=lsτ[i] - lsτ[j])
-                         A[j, i] = -conj(A[i, j])
+                         A[j, i] = -A[i, j]
                     end
                elseif !in(j, dagidx) # c^dag(τi) c(τj)
 
                     A[i, j] =  GreenFunction(ξ, V, β, si[i], si[j]; τ=lsτ[i] - lsτ[j], reverse = true)
-                    A[j, i] = -conj(A[i, j])
+                    A[j, i] = -A[i, j]
                end
           end
      end
