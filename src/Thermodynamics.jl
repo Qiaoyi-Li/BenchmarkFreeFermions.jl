@@ -88,7 +88,17 @@ function SpecificHeat_μ(ϵ::Vector{Float64}, β::Real, μ::Real)::Float64
      end
 end
 
-#TODO C_N = (∂E / ∂T)_N
+"""
+     SpecificHeat_N(ϵ::Vector{Float64}, β::Real, μ::Real) -> C_N::Float64
+
+Return the fixed-particle-number specific heat `C_N = (∂E / ∂T)_N`.
+"""
+function SpecificHeat_N(ϵ::Vector{Float64}, β::Real, μ::Real)::Float64
+     isinf(β) && return 0.0
+     coefs = sech.(β * (ϵ .- μ) / 2).^2 / 4
+     dμ_T = - β * dot(coefs, ϵ .- μ) / sum(coefs)
+     return dot(coefs, ϵ .* (β^2 .* (ϵ .- μ) .+ β * dμ_T))
+end
 
 """
      SolveChemicalPotential(ϵ::Vector{Float64},   
