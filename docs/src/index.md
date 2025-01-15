@@ -23,6 +23,7 @@ Energy
 FreeEnergy
 Entropy
 SpecificHeat_μ
+SpecificHeat_N
 SolveChemicalPotential
 ```
 
