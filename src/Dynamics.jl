@@ -7,7 +7,14 @@
           ωtol::Float64 = 1e-8,
           wtol::Float64 = 1e-8) -> lsω::Vector, lsw::Vector 
 
-Return the two-particle Green's function `G^R(ω) = ⟨⟨O₁; O₂⟩⟩_{ω+iη}`, represented by the pole positions `lsω` and the corresponding weights `lsw`. Here `O₁` is represented by a matrix in the real-space basis, i.e., `O₁ = ∑ᵢⱼ O₁[i, j] cᵢ^dag cⱼ`, and similarly for `O₂`. `ωtol` is the tolerance to merge nearly degenerate poles, and `wtol` is the weight tolerance to drop negligible poles.
+Return the two-particle Green's function `G^R(ω) = ⟨⟨O₁; O₂⟩⟩_{ω+iη}`, represented by the pole positions `lsω` and the corresponding weights `lsw`. Here `O₁` is represented by a matrix in the real-space basis, i.e., `O₁ = ∑ᵢⱼ O₁[i, j] cᵢ^dag cⱼ`, and similarly for `O₂`.
+
+# Kwargs
+     ωtol::Float64 = 1e-8
+Tolerance to merge nearly degenerate poles.
+
+     wtol::Float64 = 1e-8
+Weight tolerance to drop negligible poles.
 """
 function TwoParticleGreenFunction(ξ::Vector{Float64},
      V::Matrix,
