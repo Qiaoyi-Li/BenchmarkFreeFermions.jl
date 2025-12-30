@@ -3,19 +3,29 @@
      GreenFunction(ξ::Vector{Float64}, V::Matrix{F}, β::Real,
      i::Int64, j::Int64;
      τ::Number=0.0,
+     tol::Float64 = 1e-12,
      reverse::Bool = false) -> Gij::F
 
 Compute the Green's funtion `Gij(τ) = ⟨c_i(τ) c_j^dag⟩` (up to a coefficient) with the shifted single particle spectrum `ξ = ϵ - μ` and the eigenvectors `V` obtained from `Tij = - V diagm(ϵ) V'`.
 
 # Kwargs
+     tol::Float64 = 1e-12
+Consider `ξ = 0` if `|ξ| < tol`, so that the zero-temperature limit gives `n_F(0, Inf) = 0.5`. 
+
      reverse::Bool = false
 Return `⟨c_i^dag(τ) c_j⟩` instead if `reverse = true`.
 """
 function GreenFunction(ξ::Vector{Float64}, V::Matrix{F}, β::Real;
      τ::Number=0.0,
+     tol::Float64 = 1e-12,
      reverse::Bool=false)::Matrix{F} where {F<:Union{Float64,ComplexF64}}
      # Gij(τ) = ⟨c_i(τ) c_j^dag⟩ = \sum_k Vik Vjk^* e^{-τ ξ_k}(1 - n_k)
      # ⟨c_i^dag(τ) c_j⟩ = \sum_k Vik^* Vjk e^{τ ξ_k}n_k
+
+     ξ = map(ξ) do x
+          return abs(x) < tol ? 0.0 : x
+     end
+
      if reverse
           if isinf(β)
                D = map(ξ) do x

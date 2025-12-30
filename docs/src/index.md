@@ -33,6 +33,7 @@ GreenFunction
 ExpectationValue
 TimeCorrelation
 Density
+TwoParticleGreenFunction
 ```
 
 

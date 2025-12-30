@@ -8,7 +8,7 @@ The Fermi-Dirac distribution `x -> 1 / (e^{βx} + 1)`.
 """
 function n_fermion(x::Real, β::Real)::Float64
      if isinf(β)
-          iszero(x) && return NaN
+          iszero(x) && return 0.5
           return x < 0 ? 1.0 : 0.0
      else
           return 1.0 / (exp(β * x) + 1.0)
