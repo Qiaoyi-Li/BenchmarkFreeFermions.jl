@@ -1,9 +1,9 @@
 """
      function TwoParticleGreenFunction(ξ::Vector{Float64},
-          V::Matrix,
+          V::AbstractMatrix,
           β::Real,
-          O₁::Matrix,
-          O₂::Matrix;
+          O₁::AbstractMatrix,
+          O₂::AbstractMatrix;
           ωtol::Float64 = 1e-8,
           wtol::Float64 = 1e-8) -> lsω::Vector, lsw::Vector 
 
@@ -17,10 +17,10 @@ Tolerance to merge nearly degenerate poles.
 Weight tolerance to drop negligible poles.
 """
 function TwoParticleGreenFunction(ξ::Vector{Float64},
-     V::Matrix,
+     V::AbstractMatrix,
      β::Real,
-     O₁::Matrix,
-     O₂::Matrix;
+     O₁::AbstractMatrix,
+     O₂::AbstractMatrix;
      ωtol::Float64 = 1e-8,
      wtol::Float64 = 1e-8)
 
