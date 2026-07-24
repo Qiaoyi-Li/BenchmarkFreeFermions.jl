@@ -6,7 +6,6 @@ compatibility: opencode
 metadata:
   package: "BenchmarkFreeFermions"
   uuid: "5b68a00d-ca4d-4b58-ab0c-dc082ade624e"
-  version: "0.1.3"
 ---
 
 # BenchmarkFreeFermions — Exact Free-Fermion Reference for Tensor Network Benchmarks
